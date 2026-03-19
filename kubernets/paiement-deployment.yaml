@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paiement-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paiement-service
+  template:
+    metadata:
+      labels:
+        app: paiement-service
+    spec:
+      containers:
+        - name: paiement-service
+          image: paiement-service:1.0
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker

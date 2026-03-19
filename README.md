@@ -1,40 +1,5 @@
-# Microservices TP1 - Architecture E-Commerce
+# Microservices_Devops
 
-## Architecture Globale
-
-```
-                          ┌──────────────────┐
-                          │   Config Service  │
-                          │    (port 8888)    │
-                          └────────┬─────────┘
-                                   │ fournit la config
-                                   ▼
-┌──────────┐          ┌──────────────────────┐
-│  Client  │──────►   │   Gateway Service    │
-│ (Browser │          │     (port 8080)      │
-│ / curl)  │          └───┬──────┬───────┬───┘
-└──────────┘              │      │       │
-                          │      │       │        ┌────────────────────┐
-                          │      │       │        │ Discovery Service  │
-                          │      │       │        │   (Eureka 8761)    │
-                          │      │       │        └────────────────────┘
-                          │      │       │          ▲  tous les services
-                          │      │       │          │  s'enregistrent ici
-                          ▼      ▼       ▼
-               ┌─────────┐ ┌──────────┐ ┌──────────┐
-               │Catalogue │ │Commande  │ │Paiement  │
-               │ Service  │ │ Service  │ │ Service  │
-               │ (8081)   │ │ (8082)   │ │ (8083)   │
-               └─────────┘ └──────────┘ └──────────┘
-                     ▲           │             │
-                     │  OpenFeign│   OpenFeign │
-                     └───────────┘             │
-                          ▲                    │
-                          │    OpenFeign       │
-                          └────────────────────┘
-```
-
-## Comment les services sont-ils liés ?
 
 Les services communiquent entre eux via **OpenFeign** (appels HTTP synchrones) :
 

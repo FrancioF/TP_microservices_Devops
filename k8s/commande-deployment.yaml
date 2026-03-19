@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+  apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: commande-service
@@ -32,3 +32,14 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
+    containers:
+      - name: commande-service
+        image: commande-service:1.0
+        ports:
+          - containerPort: 8080
+        volumeMounts:
+          - mountPath: /data
+            name: commande-storage
+    volumes:
+        - name: commande-storage
+          persistentVolumeClaim:

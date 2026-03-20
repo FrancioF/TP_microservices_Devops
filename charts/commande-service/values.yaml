@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: commande-service
+  repository: franciof/commande-service
   tag: latest
   pullPolicy: IfNotPresent
 

@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: gateway-service
+  repository: franciof/gateway-service
   tag: latest
   pullPolicy: IfNotPresent
 

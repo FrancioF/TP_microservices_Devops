@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: paiement-service
+  repository: franciof/paiement-service
   tag: latest
   pullPolicy: IfNotPresent
 

@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: catalogue-service
+  repository: franciof/catalogue-service
   tag: latest
   pullPolicy: IfNotPresent
 

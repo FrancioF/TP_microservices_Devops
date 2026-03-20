@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: discovery-service
+  repository: franciof/discovery-service
   tag: latest
   pullPolicy: IfNotPresent
 
